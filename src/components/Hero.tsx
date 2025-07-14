@@ -15,7 +15,7 @@ const Hero = () => {
   // Anda juga bisa menambahkan efek lain, misalnya rotasi
   const rotate = useTransform(scrollYProgress, [0, 1], [-30, 150]);
  return (
-   <section className="relative w-full h-fit mt-[100px] flex items-center justify-center bg-[#f0f0f0] overflow-hidden p-4">
+   <section className="relative w-full h-fit mt-[200px] flex items-center justify-center bg-[#f0f0f0] overflow-hidden p-4">
      <div className="relative flex flex-col lg:flex-row items-center justify-center w-full max-w-6xl">
 
        {/* --- Left Text Block ("snea") --- */}

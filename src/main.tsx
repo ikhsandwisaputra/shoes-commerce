@@ -16,11 +16,13 @@ import NotFoundPage from './pages/NotFoundPage';
 import Cart from './pages/Cart';
 import CheckoutPage from './pages/Checkout';
 
+
 createRoot(document.getElementById('root')!).render(
+      
   <StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter>
+        <BrowserRouter basename="/shoes-commerce">
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />

@@ -55,7 +55,7 @@ const ProductPrice = ({ price, salePrice }: { price: number; salePrice?: number 
 
 const BestSeller = () => {
   return (
-    <section className="py-16 sm:py-24 bg-white">
+    <section className="py-16 sm:py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* --- Section Title --- */}

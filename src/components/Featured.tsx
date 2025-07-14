@@ -1,8 +1,8 @@
 import  { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addItemToCart } from '@/redux/slices/cartSlice';
-
+import { type RootState } from '../redux/store';
 // Import all 8 shoe images
 import shoe1 from '../assets/sepatu-1.png';
 import shoe2 from '../assets/sepatu-2.png';
@@ -49,7 +49,7 @@ const Featured = () => {
   const dispatch = useDispatch();
   const [width, setWidth] = useState(0);
   const carousel = useRef<HTMLDivElement>(null);
-
+  const user = useSelector((state: RootState) => state.user.selectedUser);  
   useEffect(() => {
     // Calculate the total scrollable width
     if (carousel.current) {
@@ -143,12 +143,14 @@ const Featured = () => {
                   <span>${product.price.toFixed(2)}</span>
                 )}
               </div>
+              {user[0]?.login && (
               <button
                 onClick={() => handleAddToCart(product)}
                 className="absolute top-2 right-2 bg-black cursor-pointer text-white p-2 rounded-full"
               >
                 <FaCartShopping></FaCartShopping>
-              </button>
+              </button>                
+              )}
             </motion.div>
           ))}
         </motion.div>

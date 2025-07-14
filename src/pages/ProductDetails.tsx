@@ -5,7 +5,9 @@ import shoe5 from '../assets/sepatu-5.png';
 import shoe6 from '../assets/sepatu-6.png';
 import shoe7 from '../assets/sepatu-7.png';
 import shoe8 from '../assets/sepatu-8.png';
-
+import useLenis from '@/components/Lenis';
+import { type RootState } from '../redux/store';
+import { useSelector } from 'react-redux';
 // --- Types and Data ---
 type Product = {
   id: number;
@@ -22,9 +24,10 @@ const relatedProducts: Product[] = [
 ];
 
 const ProductDetails = () => {
+    useLenis();
   const { id } = useParams<{ id: string }>();
   const productId = parseInt(id || '');
-
+  const user = useSelector((state: RootState) => state.user.selectedUser);  
   // Find the product by id
   const product = relatedProducts.find((p) => p.id === productId);
     const recomended = relatedProducts.filter((p) => p.id !== productId);
@@ -59,13 +62,13 @@ const ProductDetails = () => {
             <div className="mt-4 flex items-center justify-between">
               <p className="text-3xl text-gray-900">${product.price.toFixed(2)}</p>
             </div>
-
-            <button
-              type="submit"
-              className="mt-8 w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            >
-              Add to bag
-            </button>
+<button
+  type="submit"
+  className="mt-8 w-full bg-black border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:white"
+  disabled={!user[0]?.login}
+>
+  Add to bag
+</button>
           </div>
         </div>
         <div className="mt-16 lg:mt-24">
